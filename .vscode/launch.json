@@ -1,0 +1,40 @@
+{
+    "configurations": [
+        {
+            "name": "Python Debugger: Python File",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}"
+        },
+        {
+            "name": "Debug: Streamlit",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "streamlit",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                "run",
+                "dashboard/app.py"
+            ]
+        },
+        {
+            "name": "Debug: FastAPI",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "uvicorn",
+            "args":[
+                "main:app",
+                "--port",
+                "8000"
+            ],
+            "jinja": true
+        }
+    ],
+    "compounds": [
+        {
+            "name": "FastAPI + Streamlit",
+            "configurations": ["Debug: FastAPI","Debug: Streamlit"]
+        }
+    ]
+}
